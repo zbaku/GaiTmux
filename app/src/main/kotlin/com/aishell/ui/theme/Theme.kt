@@ -38,7 +38,7 @@ private val DarkColorScheme = darkColorScheme(
     outlineVariant = Color(0xFF30363D)
 )
 
-private val DarkTypography = typography()
+private val DarkTypography = Typography()
 
 @Composable
 fun AiShellTheme(
