@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.multibindings.IntoSet
 import javax.inject.Singleton
 
 @Module
@@ -15,6 +16,7 @@ import javax.inject.Singleton
 object ExecutorModule {
 
     @Provides
+    @IntoSet
     @Singleton
     fun provideShellTool(): Tool = ShellTool()
 
