@@ -2,7 +2,7 @@ package com.aishell.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.aishell.domain.engine.ConfirmationLevel
+import com.aishell.domain.entity.ConfirmationLevel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
