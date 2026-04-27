@@ -17,7 +17,6 @@ object ExecutorModule {
 
     @Provides
     @IntoSet
-    @Singleton
     fun provideShellTool(): Tool = ShellTool()
 
     @Provides
