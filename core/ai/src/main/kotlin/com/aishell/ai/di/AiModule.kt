@@ -27,7 +27,6 @@ object AiModule {
 
     @Provides
     @IntoSet
-    @Singleton
     fun provideOpenAiProvider(client: OkHttpClient): AiProvider =
         OpenAiCompatibleProvider(
             providerId = "openai",
@@ -38,13 +37,11 @@ object AiModule {
 
     @Provides
     @IntoSet
-    @Singleton
     fun provideClaudeProvider(client: OkHttpClient): AiProvider =
         ClaudeProvider(client)
 
     @Provides
     @IntoSet
-    @Singleton
     fun provideMiniMaxProvider(client: OkHttpClient): AiProvider =
         MiniMaxProvider(client)
 }
