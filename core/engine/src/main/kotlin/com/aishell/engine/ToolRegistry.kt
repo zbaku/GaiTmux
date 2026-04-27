@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton
 class ToolRegistry @Inject constructor(
-    private val tools: Set<Tool>
+    private val tools: Set<@JvmSuppressWildcards Tool>
 ) {
     @PublishedApi
     internal val toolMap = ConcurrentHashMap<String, Tool>(tools.associateBy { it.name })
