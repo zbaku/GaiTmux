@@ -89,7 +89,7 @@ class AiViewModel @Inject constructor(
                 )
 
                 val historyMessages = _messages.value.map { msg ->
-                   Message(
+                    Message(
                         id = 0,
                         conversationId = 0,
                         role = if (msg is AiMessage.Assistant) MessageRole.ASSISTANT else MessageRole.USER,
@@ -109,30 +109,30 @@ class AiViewModel @Inject constructor(
                                 if (assistantMessageId == null) {
                                     assistantMessageId = messageIdCounter++
                                     val assistantMsg = AiMessage.Assistant(
-                                         id = assistantMessageId!!,
-                                         timestamp = System.currentTimeMllis(),
-                                         content = ""
+                                        id = assistantMessageId!!,
+                                        timestamp = System.currentTimeMillis(),
+                                        content = ""
                                     )
-                                     _messages.update { it + assistantMsg }
+                                    _messages.update { it + assistantMsg }
                                 }
                                 currentContent.append(event.content)
                                 _messages.update { msgs ->
-                                       msgs.map { msg ->
+                                    msgs.map { msg ->
                                         if (msg is AiMessage.Assistant && msg.id == assistantMessageId) {
                                             msg.copy(content = currentContent.toString())
                                         } else msg
-                                     }
+                                    }
                                 }
                             }
                             is AgentEvent.ToolCallResult -> {
                                 _messages.update { msgs ->
                                     msgs + AiMessage.ToolResult(
-                                         id = messageIdCounter++,
-                                         timestamp = System.currentTimeMillis(),
-                                         toolName = event.toolCallId,
-                                         content = event.result.output.ifEmpty { event.result.error ?: "no output" }
+                                        id = messageIdCounter++,
+                                        timestamp = System.currentTimeMillis(),
+                                        toolName = event.toolCallId,
+                                        content = event.result.output.ifEmpty { event.result.error ?: "no output" }
                                     )
-                                 }
+                                }
                             }
                             is AgentEvent.Error -> {
                                 _error.value = event.message
